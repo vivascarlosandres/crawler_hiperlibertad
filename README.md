@@ -144,3 +144,24 @@ PROXY_LIST = PROXIES
 PROXY_MODE = 0
 
 ```
+
+## Implementación de Paralelismo y Recursividad
+
+Scrapy cuenta con configuraciones que permiten controlar la velocidad y la cantidad de solicitudes que el bot realiza a un sitio web. El objetivo es evitar sobrecargar el servidor web y respetar las políticas de acceso del sitio web.
+
+Se puede configurar el uso de las mismas desde el archivo de configuración "settings.py"
+
+```bash
+# settings.py
+
+# Configurar el número máximo de solicitudes simultáneas que se pueden realizar.(default: 16)
+CONCURRENT_REQUESTS = 32
+
+# Configurar un retraso en segundos entre las solicitudes al mismo sitio. (default: 0)
+DOWNLOAD_DELAY = 3
+
+# Esta opción establece el número máximo de solicitudes simultáneas permitidas por DOMINIO o IP. La configuración "DOWNLOAD_DELAY" solo se aplicará a una sola:
+#CONCURRENT_REQUESTS_PER_DOMAIN = 16
+#CONCURRENT_REQUESTS_PER_IP = 16
+
+```
