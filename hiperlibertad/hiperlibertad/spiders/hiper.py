@@ -48,5 +48,5 @@ class HiperSpider(scrapy.Spider):
 
             if has_more_products:
                 # Construct URL for the next page
-                next_page = f"{self.base_url}?O=OrderByTopSaleDESC&_from={next_page_from}&_to={next_page_to}"
+                next_page = f"{self.base_url}?O=OrderByTopSaleDESC&_from={next_page_from}&_to={next_page_to}&sc={self.sc_value}"
                 yield scrapy.Request(next_page, callback=self.parse)
