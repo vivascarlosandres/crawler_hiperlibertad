@@ -30,15 +30,19 @@ class HiperSpider(scrapy.Spider):
                 'Stock': stock,
                 'Descripción': description
             }
-        
-        # Exctract current page range from the URL
-        current_page_from = int(response.url.split('_from=')[1].split('&')[0])
-        current_page_to = int(response.url.split('_to=')[1])
-        
-        # Calculate the next page range
-        next_page_from = current_page_from + 24
-        next_page_to = current_page_to + 24
+            
+            # Check if there are more products on the current page
+            has_more_products = len(data) > 0
 
-        # Construct URL for the next page
-        next_page = f"{self.base_url}?O=OrderByTopSaleDESC&_from={next_page_from}&_to={next_page_to}"
-        yield scrapy.Request(next_page, callback=self.parse)
+            # Extract current page range from the URL
+            current_page_from = int(response.url.split('_from=')[1].split('&')[0])
+            current_page_to = int(response.url.split('_to=')[1])
+
+            # Calculate the next page range
+            next_page_from = current_page_from + 24
+            next_page_to = current_page_to + 24
+
+            if has_more_products:
+                # Construct URL for the next page
+                next_page = f"{self.base_url}?O=OrderByTopSaleDESC&_from={next_page_from}&_to={next_page_to}"
+                yield scrapy.Request(next_page, callback=self.parse)
