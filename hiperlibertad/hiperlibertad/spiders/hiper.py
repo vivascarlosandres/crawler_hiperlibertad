@@ -35,7 +35,9 @@ class HiperSpider(scrapy.Spider):
             description_text = Selector(text=description_html).xpath('//text()').getall()
             description = ' '.join(description_text).strip()
 
-            yield {
+            # Check if 'Precio regular' exists
+            if regular_price is not None:
+                yield {
                 'Nombre': name,
                 'Precio regular': regular_price,
                 'Precio promocional': promotional_price,
@@ -44,7 +46,17 @@ class HiperSpider(scrapy.Spider):
                 'URL': url,
                 'Stock': stock,
                 'Descripcion': description
-            }
+                }
+            else:
+                yield {
+                'Nombre': name,
+                'Precio promocional': promotional_price,
+                'Categoria/s': category,
+                'SKU': sku,
+                'URL': url,
+                'Stock': stock,
+                'Descripcion': description
+                }
             
             # Check if there are more products on the current page
             has_more_products = len(data) > 0
@@ -58,6 +70,6 @@ class HiperSpider(scrapy.Spider):
             next_page_to = current_page_to + 24
 
             if has_more_products:
-                # Construct URL for the next page
+            # Construct URL for the next page
                 next_page = f"{self.base_url}?O=OrderByTopSaleDESC&_from={next_page_from}&_to={next_page_to}&sc={self.sc_value}"
                 yield scrapy.Request(next_page, callback=self.parse)
