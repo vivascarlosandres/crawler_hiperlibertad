@@ -1,5 +1,6 @@
 import scrapy
 import json
+from scrapy.selector import Selector
 
 
 class HiperSpider(scrapy.Spider):
@@ -28,16 +29,21 @@ class HiperSpider(scrapy.Spider):
             url = product['link']
             stock = product['items'][0]['sellers'][0]['commertialOffer']['AvailableQuantity']
             description = product['description']
+            
+            # Extract description text without HTML tags
+            description_html = product['description']
+            description_text = Selector(text=description_html).xpath('//text()').getall()
+            description = ' '.join(description_text).strip()
 
             yield {
                 'Nombre': name,
                 'Precio regular': regular_price,
                 'Precio promocional': promotional_price,
-                'Categoría/s': category,
+                'Categoria/s': category,
                 'SKU': sku,
                 'URL': url,
                 'Stock': stock,
-                'Descripción': description
+                'Descripcion': description
             }
             
             # Check if there are more products on the current page
