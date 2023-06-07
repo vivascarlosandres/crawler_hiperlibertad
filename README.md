@@ -118,3 +118,29 @@ class HiperSpider(scrapy.Spider):
 ```bash
 scrapy crawl hiper -a sc_value=1 -o nombre_sucursal.csv
 ```
+
+## Configuración de Proxies
+
+Scrapy tiene soporte incorporado para el uso de proxies.
+Se puede configurar el uso de los mismos desde el archivo de configuración "settings.py"
+
+```bash
+# settings.py
+
+# Agrega los proxies que deseas utilizar en una lista
+PROXIES = [
+    'http://proxy1.example.com:1234',
+    'https://proxy2.example.com:5678',
+    # Agrega más proxies si es necesario
+]
+
+# Activa el middleware de Scrapy para usar proxies
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 1,
+}
+
+# Configura el middleware para seleccionar un proxy aleatorio de la lista en cada solicitud
+PROXY_LIST = PROXIES
+PROXY_MODE = 0
+
+```
