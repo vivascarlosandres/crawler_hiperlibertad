@@ -20,13 +20,13 @@ class HiperSpider(scrapy.Spider):
             description = product['description']
 
             yield {
-                'name': name,
-                'regular_price': regular_price,
-                'promotional_price': promotional_price,
-                'category': category,
-                'sku': sku,
-                'url': url,
-                'stock': stock,
-                'description': description
+                'Nombre': name,
+                'Precio regular': regular_price,
+                'Precio promocional': promotional_price,
+                'Categoría/s': category,
+                'SKU': sku,
+                'URL': url,
+                'Stock': stock,
+                'Descripción': description
             }
             
