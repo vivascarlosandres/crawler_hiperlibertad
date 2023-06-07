@@ -30,4 +30,8 @@ class HiperSpider(scrapy.Spider):
                 'Stock': stock,
                 'Descripción': description
             }
+        
+        # Exctract current page range from the URL
+        current_page_from = int(response.url.split('_from=')[1].split('&')[0])
+        current_page_to = int(response.url.split('_to=')[1])
             
