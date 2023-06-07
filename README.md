@@ -165,3 +165,34 @@ DOWNLOAD_DELAY = 3
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 ```
+
+## Manejo de Excepciones
+
+En Scrapy, se puede utilizar el método "handle_httpstatus_list" para manejar códigos de estado HTTP específicos y realizar acciones personalizadas en caso de que ocurran. Por ejemplo:
+
+```bash
+def handle_httpstatus_list(self, response):
+    if response.status == 404:
+        self.logger.error(f'URL not found: {response.url}')
+
+```
+
+Se puede utilizar el método "errback" en las solicitudes para capturar y manejar excepciones específicas que ocurran durante la solicitud. Por ejemplo:
+
+```bash
+def start_requests(self):
+    yield scrapy.Request(url='http://example.com', errback=self.handle_error)
+
+def handle_error(self, failure):
+    self.logger.error(f'An error occurred: {repr(failure)}')
+
+```
+
+También, se puede utilizar el middleware "RetryMiddleware" de Scrapy para volver a intentar solicitudes en caso de fallos. Este middleware maneja automáticamente los errores y reintentos según su configuración. Se puede personalizar su comportamiento configurando opciones como RETRY_TIMES y RETRY_HTTP_CODES en el archivo de configuración. Por ejemplo:
+
+```bash
+# Archivo settings.py
+RETRY_TIMES = 3
+RETRY_HTTP_CODES = [500, 502, 503, 504, 522, 524, 408, 429]
+
+```
