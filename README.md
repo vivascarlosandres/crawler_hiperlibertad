@@ -91,3 +91,30 @@ scrapy crawl hiper -a sc_value=1 -o nombre_sucursal.csv
 - "nombre_sucursal" es el nombre del archivo csv de salida. Se puede modificar como se desee.
 
 Luego de ejecutado el código, se obtendrá como resultado un archivo csv de los productos de dicha sucursal, para la categoría > subcategoría que se indicó.
+
+## Modificar la Categoría y Subcategoría
+
+Para poder utilizar el crawler y extraer los productos de una sucursal en específico para otra Categoría > Subcategoría se deben seguir los siguientes pasos:
+
+1) Ingresar al sitio https://www.hiperlibertad.com.ar/ y elegir una sucursal.
+2) En base a la tabla anterior de "Sucursales", se debe copiar el ID correspondiente de acuerdo a la sucursal elegida.
+3) Elegir una Categoría > Subcategoría en específico. Por ejemplo: https://www.hiperlibertad.com.ar/hogar/muebles-de-interior
+4) Ubicados en dicha página, hacemos click derecho > Inspeccionar. Dentro del inspector nos dirigimos a "Network" > Fetch/XHR > Buscamos la siguiente URL:
+
+![RequestURL](https://i.imgur.com/eVFVTrc.png)
+
+5) Una vez obtenida la URL que necesitamos, podemos modificar la "base_url" de nuestro código.
+
+```Python
+class HiperSpider(scrapy.Spider):
+    name = "hiper"
+    base_url = 'https://www.hiperlibertad.com.ar/api/catalog_system/pub/products/search/almacen/aceitunas-y-encurtidos'
+    start_urls = [f'{base_url}?O=OrderByTopSaleDESC&_from=0&_to=23']
+    sc_value = '1' # Default value
+```
+
+6) Procedemos a ejecutar el código
+
+```bash
+scrapy crawl hiper -a sc_value=1 -o nombre_sucursal.csv
+```
