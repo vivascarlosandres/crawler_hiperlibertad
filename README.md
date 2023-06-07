@@ -60,7 +60,7 @@ Pre-requisitos:
   pip install scrapy
 ```
 
-<h3>Sucursales</h3>
+## Sucursales
 
 CÓRDOBA - Hipermercado Lugones = 1<br>
 CÓRDOBA - Hipermercado Rivera = 2<br>
