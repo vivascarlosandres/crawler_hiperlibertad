@@ -25,6 +25,41 @@ Datos a recolectar incluyen, pero no se limitan a:
 Nota importante: Algunos productos pueden no tener dos precios listados. En tales
 casos, el único precio existente se debe considerar como el precio publicado.
 
+## Instalación
+
+Pre-requisitos:
+- Python: https://www.python.org/downloads/
+- Pip (packet manager para Python): https://pip.pypa.io/en/stable/installation/
+- Virtualenv:
+```bash
+  Windows: pip install virtualenv
+  Linux: pip3 install virtualenv
+```
+
+
+1) Clonar el proyecto
+```bash
+  git clone https://github.com/vivascarlosandres/crawler_hiperlibertad.git
+```
+2) Crear un nuevo Virtual Enviroment "venv" para el proyecto
+
+```bash
+  python -m venv venv
+```
+
+3) Activar el Virtual Enviroment
+
+```bash
+  Windows: .\venv\Scripts\Activate.ps1
+  Linux: source venv/bin/activate
+```
+
+4) Instalar Scrapy utilizando Pip:
+
+```bash
+  pip install scrapy
+```
+
 <h3>Sucursales</h3>
 
 CÓRDOBA - Hipermercado Lugones = 1<br>
