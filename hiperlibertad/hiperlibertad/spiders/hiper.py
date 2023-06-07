@@ -6,6 +6,10 @@ class HiperSpider(scrapy.Spider):
     name = "hiper"
     base_url = 'https://www.hiperlibertad.com.ar/api/catalog_system/pub/products/search/hogar/muebles-de-interior'
     start_urls = [f'{base_url}?O=OrderByTopSaleDESC&_from=0&_to=23']
+    
+    def __init__(self, sc_value='1', *args, **kwargs):
+        super(HiperSpider, self).__init__(*args, **kwargs)
+        self.sc_value = sc_value
 
     def parse(self, response):
         data = json.loads(response.text)
