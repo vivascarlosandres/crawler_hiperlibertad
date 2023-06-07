@@ -4,7 +4,8 @@ import json
 
 class HiperSpider(scrapy.Spider):
     name = "hiper"
-    start_urls = ["https://www.hiperlibertad.com.ar/api/catalog_system/pub/products/search/tecnologia/tv-y-video?O=OrderByTopSaleDESC&_from=0&_to=23&ft&sc=1"]
+    base_url = 'https://www.hiperlibertad.com.ar/api/catalog_system/pub/products/search/hogar/muebles-de-interior'
+    start_urls = [f'{base_url}?O=OrderByTopSaleDESC&_from=0&_to=23']
 
     def parse(self, response):
         data = json.loads(response.text)
