@@ -34,4 +34,7 @@ class HiperSpider(scrapy.Spider):
         # Exctract current page range from the URL
         current_page_from = int(response.url.split('_from=')[1].split('&')[0])
         current_page_to = int(response.url.split('_to=')[1])
-            
+        
+        # Calculate the next page range
+        next_page_from = current_page_from + 24
+        next_page_to = current_page_to + 24
