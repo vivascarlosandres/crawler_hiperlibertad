@@ -19,11 +19,11 @@ ROBOTSTXT_OBEY = True
 # PROXIES
 # Agregar los proxies que se deseen utilizar en una lista
 
-PROXIES = [
-    'http://proxy1.example.com:1234',
-    'https://proxy2.example.com:5678',
-    # Agrega más proxies si es necesario
-]
+#PROXIES = [
+#    'http://proxy1.example.com:1234',
+#    'https://proxy2.example.com:5678',
+#    # Agrega más proxies si es necesario
+#]
 
 # Activa el middleware de Scrapy para usar proxies
 #DOWNLOADER_MIDDLEWARES = {

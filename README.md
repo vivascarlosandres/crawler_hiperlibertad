@@ -1,5 +1,29 @@
-<h1>Web Scraping Hiper Libertad</h1>
-<p>Éste es el reposito para el challenge de AutoScraping.</p>
+![Logo](https://imgur.com/YL4RHxX.png)
+
+# Web Scraping Hiper Libertad
+
+## Objetivo
+
+Desarrollar un crawler para el sitio www.hiperlibertad.com.ar
+
+## Requerimientos Funcionales
+
+El crawler deberá extraer todos los productos disponibles en el sitio mencionado,
+específicamente para cada una de las sucursales, para posteriormente almacenarlos en
+archivos CSV individuales (uno por sucursal).
+
+Datos a recolectar incluyen, pero no se limitan a:
+- Nombre
+- Precio regular (es decir, precio de lista o tachado)
+- Precio publicado (esto es, precio online o precio promocional)
+- Categoría
+- SKU (si está disponible)
+- URL del producto
+- Stock (si está disponible)
+- Descripción del producto
+
+Nota importante: Algunos productos pueden no tener dos precios listados. En tales
+casos, el único precio existente se debe considerar como el precio publicado.
 
 <h3>Sucursales</h3>
 
