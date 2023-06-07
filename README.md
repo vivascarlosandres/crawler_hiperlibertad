@@ -2,11 +2,24 @@
 
 # Web Scraping Hiper Libertad
 
+## Índice
+
+1) <a href="https://github.com/vivascarlosandres/crawler_hiperlibertad/tree/main#objetivo">Objetivo</a>
+2) <a href="https://github.com/vivascarlosandres/crawler_hiperlibertad/tree/main#requerimientos-funcionales">Requerimientos funcionales</a>
+3) <a href="https://github.com/vivascarlosandres/crawler_hiperlibertad/tree/main#instalación">Instalación</a>
+4) <a href="https://github.com/vivascarlosandres/crawler_hiperlibertad/tree/main#sucursales">Sucursales</a>
+5) <a href="https://github.com/vivascarlosandres/crawler_hiperlibertad/tree/main#ejecución-del-crawler">Ejecución del crawler</a>
+6) <a href="https://github.com/vivascarlosandres/crawler_hiperlibertad/tree/main#modificación-de-la-categoría-y-subcategoría">Modificación de la categoría y subcategoría</a>
+7) <a href="https://github.com/vivascarlosandres/crawler_hiperlibertad/tree/main#configuración-de-proxies">Configuración de proxies</a>
+8) <a href="https://github.com/vivascarlosandres/crawler_hiperlibertad/tree/main#implementación-de-paralelismo-y-recursividad">Implementación de paralelismo y recursividad</a>
+9) <a href="https://github.com/vivascarlosandres/crawler_hiperlibertad/tree/main#manejo-de-excepciones">Manejo de excepciones</a>
+10) <a href="https://github.com/vivascarlosandres/crawler_hiperlibertad/tree/main#política-de-reintentos">Política de reintentos</a>
+
 ## Objetivo
 
 Desarrollar un crawler para el sitio www.hiperlibertad.com.ar
 
-## Requerimientos Funcionales
+## Requerimientos funcionales
 
 El crawler deberá extraer todos los productos disponibles en el sitio mencionado,
 específicamente para cada una de las sucursales, para posteriormente almacenarlos en
@@ -78,7 +91,7 @@ SALTA - Hipermercado Salta = 14<br>
 SANTA FÉ - Hipermercado Rafaela = 15<br>
 MENDOZA - Tienda Digital Mza Capital = 16
 
-## Ejecución del Crawler
+## Ejecución del crawler
 
 El código ya viene configurado con una "base_url" de la categoría Hogar > Muebles de Interior a modo de ejemplo.
 
@@ -92,7 +105,7 @@ scrapy crawl hiper -a sc_value=1 -o nombre_sucursal.csv
 
 Luego de ejecutado el código, se obtendrá como resultado un archivo csv de los productos de dicha sucursal, para la categoría > subcategoría que se indicó.
 
-## Modificar la Categoría y Subcategoría
+## Modificación de la categoría y subcategoría
 
 Para poder utilizar el crawler y extraer los productos de una sucursal en específico para otra Categoría > Subcategoría se deben seguir los siguientes pasos:
 
@@ -119,7 +132,7 @@ class HiperSpider(scrapy.Spider):
 scrapy crawl hiper -a sc_value=1 -o nombre_sucursal.csv
 ```
 
-## Configuración de Proxies
+## Configuración de proxies
 
 Scrapy tiene soporte incorporado para el uso de proxies.
 Se puede configurar el uso de los mismos desde el archivo de configuración "settings.py"
@@ -145,7 +158,7 @@ PROXY_MODE = 0
 
 ```
 
-## Implementación de Paralelismo y Recursividad
+## Implementación de paralelismo y recursividad
 
 Scrapy cuenta con configuraciones que permiten controlar la velocidad y la cantidad de solicitudes que el bot realiza a un sitio web. El objetivo es evitar sobrecargar el servidor web y respetar las políticas de acceso del sitio web.
 
@@ -166,7 +179,7 @@ DOWNLOAD_DELAY = 3
 
 ```
 
-## Manejo de Excepciones
+## Manejo de excepciones
 
 En Scrapy, se puede utilizar el método "handle_httpstatus_list" para manejar códigos de estado HTTP específicos y realizar acciones personalizadas en caso de que ocurran. Por ejemplo:
 
