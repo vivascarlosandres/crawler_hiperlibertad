@@ -13,9 +13,6 @@ SPIDER_MODULES = ["hiperlibertad.spiders"]
 NEWSPIDER_MODULE = "hiperlibertad.spiders"
 
 
-# Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "hiperlibertad (+http://www.yourdomain.com)"
-
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
@@ -37,6 +34,7 @@ PROXIES = [
 #PROXY_LIST = PROXIES
 #PROXY_MODE = 0
 
+# PARALELISMO Y RECURSIVIDAD
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
