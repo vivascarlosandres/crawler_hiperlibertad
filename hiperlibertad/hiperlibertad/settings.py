@@ -19,6 +19,24 @@ NEWSPIDER_MODULE = "hiperlibertad.spiders"
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
+# PROXIES
+# Agregar los proxies que se deseen utilizar en una lista
+
+PROXIES = [
+    'http://proxy1.example.com:1234',
+    'https://proxy2.example.com:5678',
+    # Agrega más proxies si es necesario
+]
+
+# Activa el middleware de Scrapy para usar proxies
+#DOWNLOADER_MIDDLEWARES = {
+#   'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 1,
+#}
+
+# Configura el middleware para seleccionar un proxy aleatorio de la lista en cada solicitud
+#PROXY_LIST = PROXIES
+#PROXY_MODE = 0
+
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
