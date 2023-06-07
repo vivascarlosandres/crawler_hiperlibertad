@@ -38,3 +38,7 @@ class HiperSpider(scrapy.Spider):
         # Calculate the next page range
         next_page_from = current_page_from + 24
         next_page_to = current_page_to + 24
+
+        # Construct URL for the next page
+        next_page = f"{self.base_url}?O=OrderByTopSaleDESC&_from={next_page_from}&_to={next_page_to}"
+        yield scrapy.Request(next_page, callback=self.parse)
