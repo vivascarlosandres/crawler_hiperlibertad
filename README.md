@@ -196,3 +196,30 @@ RETRY_TIMES = 3
 RETRY_HTTP_CODES = [500, 502, 503, 504, 522, 524, 408, 429]
 
 ```
+
+## Política de reintentos
+
+Se puede personalizar la política de reintentos utilizando el middleware "RetryMiddleware" mencionado anteriormente. Se puede ajustar la configuración según las necesidades, como el número máximo de reintentos permitidos (RETRY_TIMES) y los códigos de estado HTTP que deben considerarse para los reintentos (RETRY_HTTP_CODES).
+
+Además, se puede implementar una lógica personalizada en el método "retry" de la spider para decidir si se debe reintentar una solicitud específica en función de la respuesta recibida. Por ejemplo:
+
+```bash
+def parse(self, response):
+    if response.status == 500:
+        # Lógica personalizada para decidir si se debe reintentar o no
+        if self.should_retry(response):
+            yield response.request.replace(dont_filter=True)
+        else:
+            self.logger.error('Max retries reached. Skipping request.')
+    else:
+        # Procesar la respuesta normalmente
+        pass
+
+def should_retry(self, response):
+    # Lógica personalizada para decidir si se debe reintentar o no
+    # Puedes considerar condiciones como el contenido de la respuesta, número de reintentos, etc.
+    return True  # O False, dependiendo de tu lógica
+
+```
+
+Implementar el manejo de excepciones y una política de reintentos adecuados en la spider de Scrapy ayudará a mejorar la robustez y tolerancia a fallos de tu bot de web scraping.
