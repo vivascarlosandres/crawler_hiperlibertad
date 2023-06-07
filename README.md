@@ -77,3 +77,17 @@ SAN JUAN - Hipermercado San Juan = 13<br>
 SALTA - Hipermercado Salta = 14<br>
 SANTA FÉ - Hipermercado Rafaela = 15<br>
 MENDOZA - Tienda Digital Mza Capital = 16
+
+## Ejecución del Crawler
+
+El código ya viene configurado con una "base_url" de la categoría Hogar > Muebles de Interior a modo de ejemplo.
+
+Para ejecutar el crawler utilizar el siguiente comando
+
+```bash
+scrapy crawl hiper -a sc_value=1 -o nombre_sucursal.csv
+```
+- "sc_value" corresponde al ID de la sucursal. En base a la tabla anterior de "Sucursales" se puede insertar el ID que se desee.
+- "nombre_sucursal" es el nombre del archivo csv de salida. Se puede modificar como se desee.
+
+Luego de ejecutado el código, se obtendrá como resultado un archivo csv de los productos de dicha sucursal, para la categoría > subcategoría que se indicó.
