@@ -41,7 +41,7 @@ casos, el único precio existente se debe considerar como el precio publicado.
 ## Instalación
 
 Pre-requisitos:
-- Python: https://www.python.org/downloads/
+- Python 3.11.3: https://www.python.org/downloads/release/python-3113/
 - Pip (packet manager para Python): https://pip.pypa.io/en/stable/installation/
 - Virtualenv:
 ```bash
